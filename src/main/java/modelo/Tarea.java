@@ -1,0 +1,107 @@
+
+package modelo;
+
+import java.io.Serializable;
+
+public class Tarea implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
+    
+    int IdTarea;
+    String Nombre;
+    String Descripcion;
+    String FechaInicio;
+    String FechaLim;
+    int Estado;
+    int Prioridad;
+    int Etiqueta;
+    int Proyecto;
+
+    public Tarea() {
+    }
+
+    public Tarea(int IdTarea, String Nombre, String Descripcion, String FechaInicio, String FechaLim, int Estado, int Prioridad, int Etiqueta, int Proyecto) {
+        this.IdTarea = IdTarea;
+        this.Nombre = Nombre;
+        this.Descripcion = Descripcion;
+        this.FechaInicio = FechaInicio;
+        this.FechaLim = FechaLim;
+        this.Estado = Estado;
+        this.Prioridad = Prioridad;
+        this.Etiqueta = Etiqueta;
+        this.Proyecto = Proyecto;
+    }
+
+    public int getIdTarea() {
+        return IdTarea;
+    }
+
+    public void setIdTarea(int IdTarea) {
+        this.IdTarea = IdTarea;
+    }
+
+    public String getNombre() {
+        return Nombre;
+    }
+
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
+    }
+
+    public String getDescripcion() {
+        return Descripcion;
+    }
+
+    public void setDescripcion(String Descripcion) {
+        this.Descripcion = Descripcion;
+    }
+
+    public String getFechaInicio() {
+        return FechaInicio;
+    }
+
+    public void setFechaInicio(String FechaInicio) {
+        this.FechaInicio = FechaInicio;
+    }
+
+    public String getFechaLim() {
+        return FechaLim;
+    }
+
+    public void setFechaLim(String FechaLim) {
+        this.FechaLim = FechaLim;
+    }
+
+    public int getEstado() {
+        return Estado;
+    }
+
+    public void setEstado(int Estado) {
+        this.Estado = Estado;
+    }
+
+    public int getPrioridad() {
+        return Prioridad;
+    }
+
+    public void setPrioridad(int Prioridad) {
+        this.Prioridad = Prioridad;
+    }
+
+    public int getEtiqueta() {
+        return Etiqueta;
+    }
+
+    public void setEtiqueta(int Etiqueta) {
+        this.Etiqueta = Etiqueta;
+    }
+
+    public int getProyecto() {
+        return Proyecto;
+    }
+
+    public void setProyecto(int Proyecto) {
+        this.Proyecto = Proyecto;
+    }
+        
+}
