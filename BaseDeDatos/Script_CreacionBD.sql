@@ -32,13 +32,21 @@ CREATE TABLE Usuario(
 	Estado int NOT NULL REFERENCES Estado(IdEstado)
 );
 
+CREATE TABLE Workspace(
+	IdWorkspace serial NOT NULL PRIMARY KEY,
+	Nombre varchar(50),
+	Usuario int NOT NULL REFERENCES Usuario(IdUsuario),
+	Estado int NOT NULL REFERENCES Estado(IdEstado)
+);
+
 CREATE TABLE Proyecto(
 	IdProyecto serial NOT NULL PRIMARY KEY,
 	Nombre varchar(100),
 	Descripcion varchar(100),
 	FechaInicio date,
 	FechaFin date,
-	Estado int NOT NULL REFERENCES Estado(IdEstado)
+	Estado int NOT NULL REFERENCES Estado(IdEstado),
+	Workspace int NOT NULL REFERENCES Workspace(IdWorkspace)
 );
 
 CREATE TABLE Tarea(
