@@ -2,6 +2,7 @@
 package modelo;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 public class Comentario implements Serializable {
     
@@ -9,6 +10,7 @@ public class Comentario implements Serializable {
     
     int IdComentario;
     String Contenido;
+    LocalDate Fecha;
     int Usuario;
     int Tarea;
     int Estado;
@@ -40,6 +42,14 @@ public class Comentario implements Serializable {
         this.Contenido = Contenido;
     }
 
+    public LocalDate getFecha() {
+        return Fecha;
+    }
+
+    public void setFecha(LocalDate Fecha) {
+        this.Fecha = Fecha;
+    }
+    
     public int getUsuario() {
         return Usuario;
     }

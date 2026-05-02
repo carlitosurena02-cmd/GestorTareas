@@ -2,6 +2,7 @@
 package modelo;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 public class Usuario implements Serializable{
     
@@ -13,15 +14,15 @@ public class Usuario implements Serializable{
     String ApellidoM;
     String Email;
     String Password_;
-    String DOB;
-    String FechaRegistro;
+    LocalDate DOB;
+    LocalDate FechaRegistro;
     int Rol;
     int Estado;
 
     public Usuario() {
     }
 
-    public Usuario(int IdUsuario, String Nombre, String ApellidoP, String ApellidoM, String Email, String Password_, String DOB, String FechaRegistro, int Rol, int Estado) {
+    public Usuario(int IdUsuario, String Nombre, String ApellidoP, String ApellidoM, String Email, String Password_, LocalDate DOB, LocalDate FechaRegistro, int Rol, int Estado) {
         this.IdUsuario = IdUsuario;
         this.Nombre = Nombre;
         this.ApellidoP = ApellidoP;
@@ -82,19 +83,19 @@ public class Usuario implements Serializable{
         this.Password_ = Password_;
     }
 
-    public String getDOB() {
+    public LocalDate getDOB() {
         return DOB;
     }
 
-    public void setDOB(String DOB) {
+    public void setDOB(LocalDate DOB) {
         this.DOB = DOB;
     }
 
-    public String getFechaRegistro() {
+    public LocalDate getFechaRegistro() {
         return FechaRegistro;
     }
 
-    public void setFechaRegistro(String FechaRegistro) {
+    public void setFechaRegistro(LocalDate FechaRegistro) {
         this.FechaRegistro = FechaRegistro;
     }
 

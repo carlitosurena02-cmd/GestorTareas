@@ -2,6 +2,7 @@
 package modelo;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 public class Proyecto implements Serializable{
     
@@ -10,14 +11,14 @@ public class Proyecto implements Serializable{
     int IdProyecto;
     String Nombre;
     String Descripcion;
-    String FechaInicio;
-    String FechaFin;
+    LocalDate FechaInicio;
+    LocalDate FechaFin;
     int Estado;
 
     public Proyecto() {
     }
 
-    public Proyecto(int IdProyecto, String Nombre, String Descripcion, String FechaInicio, String FechaFin, int Estado) {
+    public Proyecto(int IdProyecto, String Nombre, String Descripcion, LocalDate FechaInicio, LocalDate FechaFin, int Estado) {
         this.IdProyecto = IdProyecto;
         this.Nombre = Nombre;
         this.Descripcion = Descripcion;
@@ -50,19 +51,19 @@ public class Proyecto implements Serializable{
         this.Descripcion = Descripcion;
     }
 
-    public String getFechaInicio() {
+    public LocalDate getFechaInicio() {
         return FechaInicio;
     }
 
-    public void setFechaInicio(String FechaInicio) {
+    public void setFechaInicio(LocalDate FechaInicio) {
         this.FechaInicio = FechaInicio;
     }
 
-    public String getFechaFin() {
+    public LocalDate getFechaFin() {
         return FechaFin;
     }
 
-    public void setFechaFin(String FechaFin) {
+    public void setFechaFin(LocalDate FechaFin) {
         this.FechaFin = FechaFin;
     }
 

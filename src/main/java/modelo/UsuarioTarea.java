@@ -2,6 +2,7 @@
 package modelo;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 public class UsuarioTarea implements Serializable{
     
@@ -9,12 +10,12 @@ public class UsuarioTarea implements Serializable{
     
     int Usuario;
     int Tarea;
-    int FechaAsignacion;
+    LocalDate FechaAsignacion;
 
     public UsuarioTarea() {
     }
 
-    public UsuarioTarea(int Usuario, int Tarea, int FechaAsignacion) {
+    public UsuarioTarea(int Usuario, int Tarea, LocalDate FechaAsignacion) {
         this.Usuario = Usuario;
         this.Tarea = Tarea;
         this.FechaAsignacion = FechaAsignacion;
@@ -36,11 +37,11 @@ public class UsuarioTarea implements Serializable{
         this.Tarea = Tarea;
     }
 
-    public int getFechaAsignacion() {
+    public LocalDate getFechaAsignacion() {
         return FechaAsignacion;
     }
 
-    public void setFechaAsignacion(int FechaAsignacion) {
+    public void setFechaAsignacion(LocalDate FechaAsignacion) {
         this.FechaAsignacion = FechaAsignacion;
     }
         

@@ -64,6 +64,7 @@ CREATE TABLE Tarea(
 CREATE TABLE Comentario(
 	IdComentario serial NOT NULL PRIMARY KEY,
 	Contenido text,
+	Fecha date,
 	Usuario int NOT NULL REFERENCES Usuario(IdUsuario),
 	Tarea int NOT NULL REFERENCES Tarea(IdTarea),
 	Estado int NOT NULL REFERENCES Estado(IdEstado)
@@ -84,7 +85,6 @@ CREATE TABLE UsuarioProyecto(
 	FechaUnion date,
 	PRIMARY KEY (Usuario, Proyecto)
 );
-
 
 
 

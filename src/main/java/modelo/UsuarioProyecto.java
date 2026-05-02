@@ -2,6 +2,7 @@
 package modelo;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 public class UsuarioProyecto implements Serializable{
     
@@ -11,12 +12,12 @@ public class UsuarioProyecto implements Serializable{
     int Proyecto;
     int RolProyecto;
     int Estado;
-    String FechaUnion;
+    LocalDate FechaUnion;
 
     public UsuarioProyecto() {
     }
 
-    public UsuarioProyecto(int Usuario, int Proyecto, int RolProyecto, int Estado, String FechaUnion) {
+    public UsuarioProyecto(int Usuario, int Proyecto, int RolProyecto, int Estado, LocalDate FechaUnion) {
         this.Usuario = Usuario;
         this.Proyecto = Proyecto;
         this.RolProyecto = RolProyecto;
@@ -56,11 +57,11 @@ public class UsuarioProyecto implements Serializable{
         this.Estado = Estado;
     }
 
-    public String getFechaUnion() {
+    public LocalDate getFechaUnion() {
         return FechaUnion;
     }
 
-    public void setFechaUnion(String FechaUnion) {
+    public void setFechaUnion(LocalDate FechaUnion) {
         this.FechaUnion = FechaUnion;
     }
         
