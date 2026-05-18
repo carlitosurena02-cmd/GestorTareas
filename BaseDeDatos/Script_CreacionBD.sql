@@ -24,18 +24,17 @@ CREATE TABLE Usuario(
 	Nombre varchar(50),
 	ApellidoP varchar(50),
 	ApellidoM varchar(50),
-	Email varchar(100),
+	Email varchar(100) UNIQUE,
+	Username text UNIQUE,
 	Password_ varchar(255),
 	DOB date,
 	FechaRegistro date,
-	Rol int NOT NULL REFERENCES Rol(IdRol),
-	Estado int NOT NULL REFERENCES Estado(IdEstado)
+	Estado int NOT NULL DEFAULT 1 REFERENCES Estado(IdEstado)
 );
 
 CREATE TABLE Workspace(
 	IdWorkspace serial NOT NULL PRIMARY KEY,
 	Nombre varchar(50),
-	Usuario int NOT NULL REFERENCES Usuario(IdUsuario),
 	Estado int NOT NULL REFERENCES Estado(IdEstado)
 );
 
@@ -86,6 +85,10 @@ CREATE TABLE UsuarioProyecto(
 	PRIMARY KEY (Usuario, Proyecto)
 );
 
-
-
-
+CREATE TABLE UsuarioWorkspace(
+	Usuario int NOT NULL REFERENCES Usuario(IdUsuario),
+	Workspace int NOT NULL REFERENCES Workspace(IdWorkspace),
+	RolWorkspace int NOT NULL REFERENCES Rol(IdRol),
+	Estado int NOT NULL REFERENCES Estado(IdEstado),
+	PRIMARY KEY (Usuario, Workspace)
+);

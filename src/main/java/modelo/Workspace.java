@@ -8,16 +8,14 @@ public class Workspace implements Serializable{
     
     int IdWorkspace;
     String Nombre;
-    int Usuario;
     int Estado;
 
     public Workspace() {
     }
 
-    public Workspace(int IdWorkspace, String Nombre, int Usuario, int Estado) {
+    public Workspace(int IdWorkspace, String Nombre, int Estado) {
         this.IdWorkspace = IdWorkspace;
         this.Nombre = Nombre;
-        this.Usuario = Usuario;
         this.Estado = Estado;
     }
 
@@ -35,14 +33,6 @@ public class Workspace implements Serializable{
 
     public void setNombre(String Nombre) {
         this.Nombre = Nombre;
-    }
-
-    public int getUsuario() {
-        return Usuario;
-    }
-
-    public void setUsuario(int Usuario) {
-        this.Usuario = Usuario;
     }
 
     public int getEstado() {

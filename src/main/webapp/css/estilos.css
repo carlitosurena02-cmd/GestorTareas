@@ -1,0 +1,130 @@
+
+    body{
+            font-family: 'Segoe UI', sans-serif;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+
+        /* IMAGEN DE FONDO */
+        background-image: url('../imagenes/fondo.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    h1{
+            color: #023e8a;
+            text-align: center;
+    }
+
+    .tarjeta{
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            width: 100%;
+            /*height: 100%;*/
+            max-width: 400px;
+            /*max-height: 500px;*/
+            /*margin: 60px;*/
+
+            box-sizing: border-box;
+
+    }
+
+    .tarjeta2{
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            width: 100%;
+            /*height: 100%;*/
+            max-width: 700px;
+            /*max-height: 500px;*/
+            /*margin: 60px;*/
+
+            box-sizing: border-box;
+
+    }
+
+    .dos-columnas {
+        display: flex;      /* pone las columnas en fila */
+        gap: 20px;          /* espacio entre columnas */
+    }
+
+    .columna {
+        flex: 1;            /* cada columna ocupa el mismo ancho */
+    }
+
+
+    /* LOGO dentro de la tarjeta */
+    .logo {
+        width: 200px;        /* ajusta el tamaño a tu gusto */
+        display: block;
+        margin: 0 auto 15px; /* centrado con espacio abajo */
+    }
+
+    .campo{
+            margin-bottom: 20px;
+    }
+
+    .grupo{
+            margin-bottom: 20px;
+    }
+
+    label{
+            display: block;
+            color: #0077b6;
+            font-weight: bold;
+            margin-bottom: 5px;
+    }
+
+    input{
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e1dd;
+            border-radius: 10px;
+            font-size: 15px;
+            box-sizing: border-box;
+            transition: border 0.2s;
+    }
+
+    input:focus{
+            border: 2px solid #0077b6; /*borde azul al escribir*/
+            outline: none;
+    }
+
+    button{
+            background: #023e8a;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            width: 100%;
+            font-size: 16px;
+            cursor: pointer;  /*el cursor cambia a manita en el boton */
+            transition: background 0.3s, transform 0.2s;
+    }
+
+    button:hover{
+            background: #0077b6;
+            transform: translateY(-2px); /* sube 2px al pasar el mouse */	
+    }
+
+    button:active{
+            transform: scale(0.97); /*se "presiona" al hacer clic */
+    }
+
+    a{
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #0077b6;
+            text-decoration: none; /* quita el subrayado */
+            transition: color 0.2s;
+    }
+
+    a:hover{
+            color: #023e8a; /*Azul mas oscuro al pasar el mouse*/
+            text-decoration: underline; /* subrayado aparece en hover */
+    }

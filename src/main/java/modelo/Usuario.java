@@ -13,26 +13,36 @@ public class Usuario implements Serializable{
     String ApellidoP;
     String ApellidoM;
     String Email;
+    String Username;
     String Password_;
     LocalDate DOB;
     LocalDate FechaRegistro;
-    int Rol;
     int Estado;
 
     public Usuario() {
     }
 
-    public Usuario(int IdUsuario, String Nombre, String ApellidoP, String ApellidoM, String Email, String Password_, LocalDate DOB, LocalDate FechaRegistro, int Rol, int Estado) {
+    public Usuario(int IdUsuario, String Nombre, String ApellidoP, String ApellidoM, String Email, String Username, String Password_, LocalDate DOB, LocalDate FechaRegistro, int Estado) {
         this.IdUsuario = IdUsuario;
         this.Nombre = Nombre;
         this.ApellidoP = ApellidoP;
         this.ApellidoM = ApellidoM;
         this.Email = Email;
+        this.Username = Username;
         this.Password_ = Password_;
         this.DOB = DOB;
         this.FechaRegistro = FechaRegistro;
-        this.Rol = Rol;
         this.Estado = Estado;
+    }
+
+    public Usuario(String Nombre, String ApellidoP, String ApellidoM, String Email, String Username, String Password_, LocalDate DOB) {
+        this.Nombre = Nombre;
+        this.ApellidoP = ApellidoP;
+        this.ApellidoM = ApellidoM;
+        this.Email = Email;
+        this.Username = Username;
+        this.Password_ = Password_;
+        this.DOB = DOB;
     }
 
     public int getIdUsuario() {
@@ -75,6 +85,14 @@ public class Usuario implements Serializable{
         this.Email = Email;
     }
 
+    public String getUsername() {
+        return Username;
+    }
+
+    public void setUsername(String Username) {
+        this.Username = Username;
+    }
+
     public String getPassword_() {
         return Password_;
     }
@@ -97,14 +115,6 @@ public class Usuario implements Serializable{
 
     public void setFechaRegistro(LocalDate FechaRegistro) {
         this.FechaRegistro = FechaRegistro;
-    }
-
-    public int getRol() {
-        return Rol;
-    }
-
-    public void setRol(int Rol) {
-        this.Rol = Rol;
     }
 
     public int getEstado() {
