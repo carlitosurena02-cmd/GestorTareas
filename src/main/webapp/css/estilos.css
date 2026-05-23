@@ -8,7 +8,7 @@
         min-height: 100vh;
 
         /* IMAGEN DE FONDO */
-        background-image: url('../imagenes/fondo.png');
+        background-image: url('../imagenes/Fondo.png');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -71,6 +71,13 @@
     .grupo{
             margin-bottom: 20px;
     }
+    
+    .error-msg{
+        color: #d90429; 
+        margin-top: 15px; 
+        font-weight: bold; 
+    }
+            
 
     label{
             display: block;

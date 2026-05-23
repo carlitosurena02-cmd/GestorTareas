@@ -6,7 +6,7 @@
 		<meta charset = "UTF-8">
 		<title> WorkIT - Login </title>
 
-		<link rel="icon" type="image/png" href="img/LogoVentana.png">
+		<link rel="icon" type="image/png" href="imagenes/LogoVentana.png">
 
 		<link rel="stylesheet" href="css/estilos.css">
 			
@@ -16,7 +16,7 @@
 
 		<div class="tarjeta">
 
-			<img src="img/Logote.png" alt="Logo GestorTareas" class="logo">
+			<img src="imagenes/Logote.png" alt="Logo GestorTareas" class="logo">
 
 			<!-- <h1> Bienvenido</h1> -->
 
@@ -35,8 +35,10 @@
 				<button type="submit"> Entrar </button>
 
 			</form>	
+                        
+                        <div class="error-msg">${mensajeError}</div>
 
-			<a href="registro.html"> ¿No tienes cuenta? ¡Regístrate aquí! </a>
+			<a href="Registro.jsp"> ¿No tienes cuenta? ¡Regístrate aquí! </a>
 
 		</div>
 

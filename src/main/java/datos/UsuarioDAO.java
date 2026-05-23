@@ -16,6 +16,7 @@ public class UsuarioDAO {
     private static final String selectEmailSQL = "SELECT COUNT(*) FROM Usuario WHERE Email = ?";
     private static final String selectUsernameSQL = "SELECT COUNT(*) FROM Usuario WHERE Username = ?";
     
+    
     static public boolean userExist(String username){
         Connection conn = null;
         PreparedStatement ps = null;

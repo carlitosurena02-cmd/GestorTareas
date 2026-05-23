@@ -39,13 +39,13 @@ public class ServletRegistro extends HttpServlet{
         return; 
         }
         
-        if(!UsuarioDAO.emailExist(email)){
+        if(UsuarioDAO.emailExist(email)){
             hsreq.setAttribute("mensajeError", "Correo anteriormente usado");
             hsreq.getRequestDispatcher("Registro.jsp").forward(hsreq, hsres);
             return;
         }
         
-        if(!UsuarioDAO.userExist(user)){
+        if(UsuarioDAO.userExist(user)){
             hsreq.setAttribute("mensajeError", "Usuario repetido");
             hsreq.getRequestDispatcher("Registro.jsp").forward(hsreq, hsres);
             return;

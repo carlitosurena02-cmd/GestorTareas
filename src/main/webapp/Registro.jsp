@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Crear Cuenta</title>
 
-	<link rel="icon" type="image/png" href="img/LogoVentana.png">
+	<link rel="icon" type="image/png" href="imagenes/LogoVentana.png">
 
 	<link rel="stylesheet" href="css/estilos.css">
 
@@ -16,7 +16,7 @@
 
 		<div class="tarjeta2">
 
-			<img src="img/Registro.png" alt="Logo GestorTareas" class="logo">
+			<img src="imagenes/Logote.png" alt="Logo GestorTareas" class="logo">
 
 			<!-- <h1>Registrate</h1> -->
 
@@ -75,8 +75,10 @@
 					<button type="submit">Registrarse</button>
 					
 				</form>
+                        
+                                <div class="error-msg">${mensajeError}</div>
 
-				<a href="Login.html"> ¿Ya tienes cuenta? ¡Inicia sesion!</a>
+				<a href="Login.jsp"> ¿Ya tienes cuenta? ¡Inicia sesion!</a>
 			
 		</div>
 
