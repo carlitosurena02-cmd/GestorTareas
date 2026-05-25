@@ -43,11 +43,17 @@ public class WorkspaceDAO {
                     ps.setInt(4,1);
                     
                     check = ps.executeUpdate();
+                    if(check == 1)
+                        conn.commit();
+                    else
+                        conn.rollback();
+                }else{
+                    conn.rollback();
                 }
+            }else{
+                conn.rollback();
             }
-            
-            conn.commit();
-            
+                        
         }catch(SQLException ex){
             try{
                 conn.rollback();

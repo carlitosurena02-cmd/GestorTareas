@@ -36,7 +36,7 @@ public class ServletLogin extends HttpServlet{
             
             HttpSession sesion = hsreq.getSession();
             sesion.setAttribute("usuarioLogueado", usuario);
-            hsres.sendRedirect("Menu.jsp");
+            hsres.sendRedirect("ServletWorkspace");
             
         }else{
             hsreq.setAttribute("mensajeError", "Usuario o Contraseña incorrectos");

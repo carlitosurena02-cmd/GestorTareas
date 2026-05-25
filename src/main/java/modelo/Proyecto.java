@@ -14,17 +14,19 @@ public class Proyecto implements Serializable{
     LocalDate FechaInicio;
     LocalDate FechaFin;
     int Estado;
+    int Workspace;
 
     public Proyecto() {
     }
 
-    public Proyecto(int IdProyecto, String Nombre, String Descripcion, LocalDate FechaInicio, LocalDate FechaFin, int Estado) {
+    public Proyecto(int IdProyecto, String Nombre, String Descripcion, LocalDate FechaInicio, LocalDate FechaFin, int Estado, int Workspace) {
         this.IdProyecto = IdProyecto;
         this.Nombre = Nombre;
         this.Descripcion = Descripcion;
         this.FechaInicio = FechaInicio;
         this.FechaFin = FechaFin;
         this.Estado = Estado;
+        this.Workspace = Workspace;
     }
 
     public int getIdProyecto() {
@@ -73,6 +75,14 @@ public class Proyecto implements Serializable{
 
     public void setEstado(int Estado) {
         this.Estado = Estado;
+    }
+
+    public int getWorkspace() {
+        return Workspace;
+    }
+
+    public void setWorkspace(int Workspace) {
+        this.Workspace = Workspace;
     }
     
 }

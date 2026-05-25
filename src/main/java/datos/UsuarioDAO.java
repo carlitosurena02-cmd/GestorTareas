@@ -16,6 +16,34 @@ public class UsuarioDAO {
     private static final String selectEmailSQL = "SELECT COUNT(*) FROM Usuario WHERE Email = ?";
     private static final String selectUsernameSQL = "SELECT COUNT(*) FROM Usuario WHERE Username = ?";
     
+    private static final String searchByUsername = "SELECT IdUsuario FROM Usuario WHERE Username = ?";
+    
+    static public int userId(String username){
+        Connection conn = null;
+        PreparedStatement ps =  null;
+        ResultSet rs = null;
+        int userId = 0;
+        try{
+            conn = Conexion.getConnection();
+            ps = conn.prepareStatement(searchByUsername);
+            
+            ps.setString(1, username);
+            
+            rs = ps.executeQuery();
+            
+            if(rs.next())
+                userId = rs.getInt("IdUsuario");
+                        
+        }catch(SQLException ex){
+            ex.printStackTrace(System.out);
+        }finally{
+            Conexion.close(rs);
+            Conexion.close(ps);
+            Conexion.close(conn);
+        }
+        return userId;
+    }
+    
     
     static public boolean userExist(String username){
         Connection conn = null;

@@ -1,14 +1,14 @@
 package modelo;
 
-public class ListUsuarioWorkspaceDTO{
+public class ListMembersDTO{
     
     String Username;
     String Descripcion;
 
-    public ListUsuarioWorkspaceDTO() {
+    public ListMembersDTO() {
     }
 
-    public ListUsuarioWorkspaceDTO(String Username, String Descripcion) {
+    public ListMembersDTO(String Username, String Descripcion) {
         this.Username = Username;
         this.Descripcion = Descripcion;
     }
