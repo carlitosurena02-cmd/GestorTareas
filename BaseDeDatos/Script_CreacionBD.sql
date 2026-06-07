@@ -14,22 +14,9 @@ CREATE TABLE Prioridad(
 	Descripcion varchar(50)
 );
 
-CREATE TABLE Etiqueta(
-	IdEtiqueta serial PRIMARY KEY NOT NULL,
-	Descripcion varchar(50)
-);
-
-CREATE TABLE Usuario(
-	IdUsuario serial PRIMARY KEY NOT NULL,
-	Nombre varchar(50),
-	ApellidoP varchar(50),
-	ApellidoM varchar(50),
-	Email varchar(100) UNIQUE,
-	Username text UNIQUE,
-	Password_ varchar(255),
-	DOB date,
-	FechaRegistro date,
-	Estado int NOT NULL DEFAULT 1 REFERENCES Estado(IdEstado)
+CREATE TABLE Progreso(
+    IdProgreso serial PRIMARY KEY NOT NULL,
+    Descripcion varchar(50)
 );
 
 CREATE TABLE Workspace(
@@ -48,6 +35,27 @@ CREATE TABLE Proyecto(
 	Workspace int NOT NULL REFERENCES Workspace(IdWorkspace)
 );
 
+CREATE TABLE Usuario(
+	IdUsuario serial PRIMARY KEY NOT NULL,
+	Nombre varchar(50),
+	ApellidoP varchar(50),
+	ApellidoM varchar(50),
+	Email varchar(100) UNIQUE,
+	Username text UNIQUE,
+	Password_ varchar(255),
+	DOB date,
+	FechaRegistro date,
+	Estado int NOT NULL DEFAULT 1 REFERENCES Estado(IdEstado)
+);
+
+CREATE TABLE Etiqueta(
+	IdEtiqueta serial PRIMARY KEY NOT NULL,
+	Descripcion varchar(50),
+	Proyecto int NOT NULL REFERENCES Proyecto(IdProyecto),
+	Usuario int NOT NULL REFERENCES Usuario(IdUsuario),
+	Estado int NOT NULL DEFAULT 1 REFERENCES Estado(IdEstado)
+);
+
 CREATE TABLE Tarea(
 	IdTarea serial NOT NULL PRIMARY KEY,
 	Nombre varchar(50),
@@ -57,7 +65,8 @@ CREATE TABLE Tarea(
 	Estado int NOT NULL REFERENCES Estado(IdEstado),
 	Prioridad int NOT NULL REFERENCES Prioridad(IdPrioridad),
 	Etiqueta int NOT NULL REFERENCES Etiqueta(IdEtiqueta),
-	Proyecto int NOT NULL REFERENCES Proyecto(IdProyecto)
+	Proyecto int NOT NULL REFERENCES Proyecto(IdProyecto),
+	Progreso int NOT NULL DEFAULT 1 REFERENCES Progreso(IdProgreso)
 );
 
 CREATE TABLE Comentario(
@@ -72,6 +81,7 @@ CREATE TABLE Comentario(
 CREATE TABLE UsuarioTarea(
 	Usuario int NOT NULL REFERENCES Usuario(IdUsuario),
 	Tarea int NOT NULL REFERENCES Tarea(IdTarea),
+	Estado int NOT NULL REFERENCES Estado(IdEstado),
 	FechaAsignacion date,
 	PRIMARY KEY (Usuario, Tarea)
 );

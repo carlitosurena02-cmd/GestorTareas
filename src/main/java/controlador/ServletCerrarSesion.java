@@ -8,7 +8,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
 
-@WebServlet("/CerrarSesion")
+@WebServlet("/ServletCerrarSesion")
 
 public class ServletCerrarSesion extends HttpServlet{
     

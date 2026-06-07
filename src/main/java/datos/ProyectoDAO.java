@@ -27,6 +27,10 @@ public class ProyectoDAO {
                                                        "WHERE Estado = 1 " +
                                                        "AND Workspace = ?";
     
+    public static final String deleteProyectSQL = "UPDATE Proyecto " + 
+                                                    "SET Estado = 2 " +
+                                                    "WHERE IdProyecto = ?";
+    
     public int createProyect(Proyecto p, int userId){
         Connection conn = null;
         PreparedStatement ps = null;
@@ -131,6 +135,27 @@ public class ProyectoDAO {
         }
        
         return listP;
+    }
+    
+    public int deleteWorkspaces(int proyectId){
+        Connection conn = null;
+        PreparedStatement ps = null;
+        int check = 0;
+        
+        try{
+            conn = Conexion.getConnection();
+            ps = conn.prepareStatement(deleteProyectSQL);
+            
+            ps.setInt(1, proyectId);
+            
+            check = ps.executeUpdate();
+        }catch(SQLException ex){
+            ex.printStackTrace(System.out);
+        }finally{
+            Conexion.close(ps);
+            Conexion.close(conn);
+        }
+        return check;        
     }
     
 }

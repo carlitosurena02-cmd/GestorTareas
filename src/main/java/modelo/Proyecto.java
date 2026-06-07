@@ -29,6 +29,15 @@ public class Proyecto implements Serializable{
         this.Workspace = Workspace;
     }
 
+    public Proyecto(String Nombre, String Descripcion, LocalDate FechaInicio, LocalDate FechaFin, int Estado, int Workspace) {
+        this.Nombre = Nombre;
+        this.Descripcion = Descripcion;
+        this.FechaInicio = FechaInicio;
+        this.FechaFin = FechaFin;
+        this.Estado = Estado;
+        this.Workspace = Workspace;
+    }
+
     public int getIdProyecto() {
         return IdProyecto;
     }

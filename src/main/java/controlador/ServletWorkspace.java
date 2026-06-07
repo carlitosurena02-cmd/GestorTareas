@@ -36,7 +36,7 @@ public class ServletWorkspace extends HttpServlet{
         
         Usuario user = getUsuarioSesion(hsreq,hsres);
         
-        String wsn = hsreq.getParameter("txtNombre");
+        String wsn = hsreq.getParameter("txtNombreW");
         if(wsn == null || wsn.isEmpty()){
             
             hsreq.setAttribute("mensajeErrorNombre","Escriba un nombre");

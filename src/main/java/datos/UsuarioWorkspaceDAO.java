@@ -29,6 +29,43 @@ public class UsuarioWorkspaceDAO {
                                                "WHERE Usuario = ? "+
                                                "AND Workspace = ?";
     
+    private static final String getRolSQL = "SELECT RolWorkspace " +
+                                         "FROM UsuarioWorkspace " +
+                                         "WHERE Usuario = ? " +
+                                         "AND Workspace = ?";
+    
+    
+    public int getRol(int userId, int workspaceId){
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        int id = -1;
+        
+        try{
+            conn = Conexion.getConnection();
+            ps = conn.prepareStatement(getRolSQL);
+            
+            ps.setInt(1, userId);
+            ps.setInt(2, workspaceId);
+            
+            rs = ps.executeQuery();
+            
+            if(rs.next()){
+                id = rs.getInt("RolWorkspace");
+            }
+            
+        }catch(SQLException ex){
+            ex.printStackTrace(System.out);
+        }finally{
+            Conexion.close(rs);
+            Conexion.close(ps);
+            Conexion.close(conn);
+        }
+        
+        return id;
+    }
+    
+    
     public int addMember(int userId, int workspaceId, int rol){
         Connection conn = null;
         PreparedStatement ps = null;

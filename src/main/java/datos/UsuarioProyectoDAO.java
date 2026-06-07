@@ -30,6 +30,11 @@ public class UsuarioProyectoDAO {
                                                   "WHERE Usuario = ? " + 
                                                   "AND Proyecto = ?";
     
+    private static final String getRolSQL = "SELECT RolProyecto " +
+                                            "FROM UsuarioProyecto " +
+                                            "WHERE Usuario = ? " +
+                                            "AND Proyecto = ?";
+    
     public int addUser(int userId, int proyectId, int rol){
         Connection conn = null;
         PreparedStatement ps = null;
@@ -131,6 +136,34 @@ public class UsuarioProyectoDAO {
             Conexion.close(conn);
         }
         return check;
+    }
+    
+    public int getRolUserProyect(int userId, int proyectId){
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        int rol = -1;
+        
+        try{
+            conn = Conexion.getConnection();
+            ps = conn.prepareStatement(getRolSQL);
+            
+            ps.setInt(1, userId);
+            ps.setInt(2,proyectId);
+            
+            rs = ps.executeQuery();
+            if(rs.next()){
+                rol = rs.getInt("RolProyecto");
+            }
+            
+        }catch(SQLException ex){
+            ex.printStackTrace(System.out);
+        }finally{
+            Conexion.close(rs);
+            Conexion.close(ps);
+            Conexion.close(conn);
+        }
+        return rol;
     }
     
 }

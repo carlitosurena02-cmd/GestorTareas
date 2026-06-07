@@ -10,14 +10,16 @@ public class UsuarioTarea implements Serializable{
     
     int Usuario;
     int Tarea;
+    int Estado;
     LocalDate FechaAsignacion;
 
     public UsuarioTarea() {
     }
 
-    public UsuarioTarea(int Usuario, int Tarea, LocalDate FechaAsignacion) {
+    public UsuarioTarea(int Usuario, int Tarea, int Estado, LocalDate FechaAsignacion) {
         this.Usuario = Usuario;
         this.Tarea = Tarea;
+        this.Estado = Estado;
         this.FechaAsignacion = FechaAsignacion;
     }
 
@@ -37,6 +39,15 @@ public class UsuarioTarea implements Serializable{
         this.Tarea = Tarea;
     }
 
+    public int getEstado() {
+        return Estado;
+    }
+
+    public void setEstado(int Estado) {
+        this.Estado = Estado;
+    }
+    
+    
     public LocalDate getFechaAsignacion() {
         return FechaAsignacion;
     }
