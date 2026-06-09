@@ -29,6 +29,11 @@
             <version>2.9.0</version>
             <type>jar</type>
         </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.2</version>
+        </dependency>
     </dependencies>
     
     <build>

@@ -57,7 +57,7 @@ public class ServletRegistro extends HttpServlet{
         if (registro == 1){
         hsres.sendRedirect("Login.jsp");
         }else{
-            hsreq.setAttribute("mensajeError", "Usuario repetido, elija otro.");
+            hsreq.setAttribute("mensajeError", "Error, intentelo de nuevo");
             hsreq.getRequestDispatcher("Registro.jsp").forward(hsreq, hsres);
         }
         

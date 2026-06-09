@@ -11,7 +11,7 @@ public class EtiquetaDAO {
                                                + "VALUES (?,?,?,?)";
     
     private static final String listLabelsSQL = "SELECT IdEtiqueta, Descripcion, Proyecto, Usuario, Estado "
-                                              + "FROM Etiquetas "
+                                              + "FROM Etiqueta "
                                               + "WHERE Proyecto = ? "
                                               + "AND Estado = 1";
     
@@ -41,7 +41,7 @@ public class EtiquetaDAO {
             Conexion.close(conn);
         }
         return check;
-    }
+    } 
     
     public List<Etiqueta> listLabels(int proyectId){
         Connection conn = null;

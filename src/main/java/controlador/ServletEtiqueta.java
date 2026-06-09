@@ -2,6 +2,7 @@ package controlador;
 
 import modelo.Usuario;
 import modelo.Etiqueta;
+import modelo.Proyecto;
 
 import datos.EtiquetaDAO;
 
@@ -16,25 +17,25 @@ import jakarta.servlet.http.*;
 
 public class ServletEtiqueta extends HttpServlet{
     
-    @Override
+    @Override    
     protected void doPost(HttpServletRequest hsreq, HttpServletResponse hsres)
             throws ServletException, IOException{
         Usuario user = getUsuarioSesion(hsreq, hsres);
         HttpSession sesion = hsreq.getSession(); 
-        String proyectId = (String) sesion.getAttribute("proyectoActual");
-        int idProyecto = Integer.parseInt(proyectId);
+        Proyecto proyecto = (Proyecto) sesion.getAttribute("proyectoActual");
+        int idProyecto = proyecto.getIdProyecto();
         
-        String nombreDesc = hsreq.getParameter("txtEtiqueta");
+        String nombreDesc = hsreq.getParameter("txtNombreEtiqueta");
          if(nombreDesc == null || nombreDesc.isEmpty()){
              hsreq.setAttribute("MensajeError", "¡Llena todos los campos!");
-             hsreq.getRequestDispatcher("ServletProyecto").forward(hsreq, hsres);
+             hsres.sendRedirect("ServletTarea?idProyecto=" + idProyecto);
              return;
          } 
         Etiqueta lbl = new Etiqueta(nombreDesc, idProyecto, user.getIdUsuario(), 1);
         new EtiquetaDAO().insertLabel(lbl);
         
         hsres.sendRedirect("ServletTarea?idProyecto=" + idProyecto);
-    }
+    } 
     
     
     private Usuario getUsuarioSesion(HttpServletRequest hsreq, HttpServletResponse hsres) 

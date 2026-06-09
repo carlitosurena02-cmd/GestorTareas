@@ -8,16 +8,16 @@ import java.util.*;
 
 public class TareaDAO {
     
-    private static final String insertWorkSQL = "INSERT INTO Tarea(Nombre, Descripcion, FechaInicio, FechaLim, Estado, Prioridad, Etiqueta, Proyecto) "
-                                              + "VALUES (?,?,?,?,?,?,?,?)";
+    private static final String insertWorkSQL = "INSERT INTO Tarea(Nombre, Descripcion, FechaInicio, FechaLim, Estado, Prioridad, Etiqueta, Proyecto, Progreso) "
+                                              + "VALUES (?,?,?,?,?,?,?,?,?)";
     
-    private static final String listMembersSQL = "SELECT Tarea.IdTarea, Tarea.Nombre, Tarea.Descripcion, Tarea.FechaInicio, Tarea.FechaLim, Tarea.Estado, Tarea.Prioridad, Tarea.Etiqueta, Tarea.Proyecto, Tarea.Progreso" +
-                                                  "FROM Tarea " +
-                                                  "JOIN UsuarioTarea " +
-                                                  "ON Tarea.IdTarea = UsuarioTarea.Tarea " +
-                                                  "WHERE UsuarioTarea.Usuario = ? " +
-                                                  "AND Tarea.Estado = 1 " + 
-                                                  "AND Tarea.Proyecto = ?";
+    private static final String listMembersSQL = "SELECT Tarea.IdTarea, Tarea.Nombre, Tarea.Descripcion, Tarea.FechaInicio, Tarea.FechaLim, Tarea.Estado, Tarea.Prioridad, Tarea.Etiqueta, Tarea.Proyecto, Tarea.Progreso " +
+                                                "FROM Tarea " +
+                                                "JOIN UsuarioTarea " +
+                                                "ON Tarea.IdTarea = UsuarioTarea.Tarea " +
+                                                "WHERE UsuarioTarea.Usuario = ? " +
+                                                "AND Tarea.Estado = 1 " + 
+                                                "AND Tarea.Proyecto = ?";
     
     private static final String listMembersAdminSQL = "SELECT * " + 
                                                        "FROM Tarea " +
@@ -44,7 +44,11 @@ public class TareaDAO {
             ps.setString(1,tarea.getNombre());
             ps.setString(2, tarea.getDescripcion());
             ps.setDate(3, java.sql.Date.valueOf(tarea.getFechaInicio()));
-            ps.setDate(4, java.sql.Date.valueOf(tarea.getFechaLim()));
+            if (tarea.getFechaLim() != null) {
+                ps.setDate(4, java.sql.Date.valueOf(tarea.getFechaLim()));
+            } else {
+                 ps.setNull(4, java.sql.Types.DATE); 
+            }
             ps.setInt(5, tarea.getEstado());
             ps.setInt(6,tarea.getPrioridad());
             ps.setInt(7, tarea.getEtiqueta());
@@ -89,7 +93,11 @@ public class TareaDAO {
                 String Nombre = rs.getString("Nombre");
                 String Descripcion = rs.getString("Descripcion");
                 LocalDate FechaInicio = rs.getDate("FechaInicio").toLocalDate();
-                LocalDate FechaLim = rs.getDate("FechaLim").toLocalDate();
+                LocalDate FechaLim = null;
+                java.sql.Date fechaLimBD = rs.getDate("FechaLim");
+                if (fechaLimBD != null) {
+                    FechaLim = fechaLimBD.toLocalDate();
+                }
                 int Estado = rs.getInt("Estado");
                 int Prioridad = rs.getInt("Prioridad");
                 int Etiqueta = rs.getInt("Etiqueta");

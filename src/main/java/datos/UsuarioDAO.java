@@ -7,9 +7,10 @@ import modelo.Usuario;
 
 public class UsuarioDAO {
     
-    private static final String insertSQL = "INSERT INTO Usuario(Nombre, ApellidoP, ApellidoM, Email, Username, Password_, DOB, FechaRegistro) VALUES (?,?,?,?,?,?,?,?)";
+    private static final String insertSQL = "INSERT INTO Usuario(Nombre, ApellidoP, ApellidoM, Email, Username, Password_, DOB, FechaRegistro, Estado) VALUES (?,?,?,?,?,?,?,?,?)";
+    
     private static final String selectloginSQL = "SELECT * " + 
-                                                 "FROM usuario " + 
+                                                 "FROM Usuario " + 
                                                  "WHERE Username = ? " + 
                                                  "AND Password_ = ? ";
     
@@ -112,6 +113,7 @@ public class UsuarioDAO {
             ps.setString(6, usuario.getPassword_());
             ps.setDate(7, java.sql.Date.valueOf(usuario.getDOB()));
             ps.setDate(8,java.sql.Date.valueOf(LocalDate.now()));
+            ps.setInt(9, 1);
             
             reg = ps.executeUpdate();
             
@@ -119,8 +121,8 @@ public class UsuarioDAO {
         }catch(SQLException ex){
             ex.printStackTrace(System.out);
         }finally{
-            Conexion.close(conn);
             Conexion.close(ps);
+            Conexion.close(conn);
         }
         
         return reg;
@@ -163,7 +165,7 @@ public class UsuarioDAO {
             ex.printStackTrace(System.out);
         }finally{
             if (rs != null) {
-        Conexion.close(rs);
+                Conexion.close(rs);
             }
             if (ps != null) {
                 Conexion.close(ps);

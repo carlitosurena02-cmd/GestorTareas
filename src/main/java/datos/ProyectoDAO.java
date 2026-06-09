@@ -31,6 +31,11 @@ public class ProyectoDAO {
                                                     "SET Estado = 2 " +
                                                     "WHERE IdProyecto = ?";
     
+    public static final String searchByIdSQL = "SELECT * " +
+                                               "FROM Proyecto " +
+                                               "WHERE IdProyecto = ?";
+    
+    
     public int createProyect(Proyecto p, int userId){
         Connection conn = null;
         PreparedStatement ps = null;
@@ -137,7 +142,7 @@ public class ProyectoDAO {
         return listP;
     }
     
-    public int deleteWorkspaces(int proyectId){
+    public int deleteProyect(int proyectId){
         Connection conn = null;
         PreparedStatement ps = null;
         int check = 0;
@@ -156,6 +161,43 @@ public class ProyectoDAO {
             Conexion.close(conn);
         }
         return check;        
+    }
+    
+    public Proyecto searchById(int proyectId){
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Proyecto proyecto = new Proyecto();
+        
+        try{
+            conn = Conexion.getConnection();
+            ps = conn.prepareStatement(searchByIdSQL);
+            
+            ps.setInt(1, proyectId);
+            
+            rs = ps.executeQuery();
+            if(rs.next()){
+                proyecto.setIdProyecto(rs.getInt("IdProyecto"));
+                proyecto.setNombre(rs.getString("Nombre"));
+                proyecto.setDescripcion(rs.getString("Descripcion"));
+                proyecto.setFechaInicio(rs.getDate("FechaInicio").toLocalDate());
+                java.sql.Date fechaFinBD = rs.getDate("FechaFin");
+                if (fechaFinBD != null) {
+                    proyecto.setFechaFin(fechaFinBD.toLocalDate());
+                } else {
+                    proyecto.setFechaFin(null);
+                }
+                proyecto.setEstado(rs.getInt("Estado"));
+                proyecto.setWorkspace(rs.getInt("Workspace"));
+            }
+        }catch(SQLException ex){
+            ex.printStackTrace(System.out);
+        }finally{
+            Conexion.close(rs);
+            Conexion.close(ps);
+            Conexion.close(conn);
+        }
+        return proyecto;
     }
     
 }

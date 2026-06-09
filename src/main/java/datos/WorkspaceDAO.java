@@ -20,6 +20,10 @@ public class WorkspaceDAO {
     public static final String deleteWorkspaceSQL = "UPDATE Workspace " + 
                                                "SET Estado = 2 " +
                                                "WHERE IdWorkspace = ?";
+    
+    public static final String searchByIdSQL = "SELECT * " +
+                                               "FROM Workspace " + 
+                                               "WHERE IdWorkspace = ?";
 
     public int createWorkspace(int idUser, String nombre){
         Connection conn =  null;
@@ -131,6 +135,34 @@ public class WorkspaceDAO {
             Conexion.close(conn);
         }
         return check;        
+    }
+    
+    public Workspace searchById(int workspaceId){
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Workspace w = new Workspace();
+        try{
+            conn = Conexion.getConnection();
+            ps = conn.prepareStatement(searchByIdSQL);
+            
+            ps.setInt(1, workspaceId);
+            rs = ps.executeQuery();
+            
+            if(rs.next()){
+                w.setIdWorkspace(rs.getInt("IdWorkspace"));
+                w.setNombre(rs.getString("Nombre"));
+                w.setEstado(rs.getInt("Estado"));
+            }
+            
+        }catch(SQLException ex){
+            ex.printStackTrace(System.out);
+        }finally{
+            Conexion.close(rs);
+            Conexion.close(ps);
+            Conexion.close(conn);
+        }
+        return w;
     }
 }
 

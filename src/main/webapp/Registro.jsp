@@ -20,8 +20,6 @@
 
 			<!-- <h1>Registrate</h1> -->
 
-			
-
 				<form action="ServletRegistro" method="POST">
 					
 					<div class="dos-columnas">
